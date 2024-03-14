@@ -12,13 +12,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
       - name: Push to Azure Repos
         run: |
+          AZURE_URL="https://Riteshbenjwal:${{ secrets.AZURE_GIT_TOKEN }}@dev.azure.com/Riteshbenjwal/Node/_git/Node"
           if git remote | grep -q azure; then
-            git remote set-url azure https://Riteshbenjwal@dev.azure.com/Riteshbenjwal/Node/_git/Node
+            git remote set-url azure $AZURE_URL
           else
-            git remote add azure https://Riteshbenjwal@dev.azure.com/Riteshbenjwal/Node/_git/Node
+            git remote add azure $AZURE_URL
           fi
           git push -u azure main
         env:
-          AZURE_PERSONAL_ACCESS_TOKEN: ${{ secrets.AZURE_GIT_TOKEN }}
+          AZURE_GIT_TOKEN: ${{ secrets.AZURE_GIT_TOKEN }}
