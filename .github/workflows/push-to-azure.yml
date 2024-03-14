@@ -14,7 +14,7 @@ jobs:
 
       - name: Push to Azure Repos
         run: |
-          git remote add azure https://Riteshbenjwal@dev.azure.com/Riteshbenjwal/Node/_git/Node
-          git push azure main
+          git remote add origin https://Riteshbenjwal@dev.azure.com/Riteshbenjwal/Node/_git/Node
+          git push -u origin --all
         env:
           AZURE_PERSONAL_ACCESS_TOKEN: ${{ secrets.AZURE_GIT_TOKEN }}
