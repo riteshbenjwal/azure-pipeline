@@ -11,13 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-
-      - name: Push to Azure Repos
+      - name: Push to Azure Repo
         run: |
           AZURE_URL="https://Riteshbenjwal:${{ secrets.AZURE_GIT_TOKEN }}@dev.azure.com/Riteshbenjwal/Node/_git/Node"
           if git remote | grep -q azure; then
