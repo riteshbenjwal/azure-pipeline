@@ -22,6 +22,6 @@ jobs:
           else
             git remote add azure $AZURE_URL
           fi
-          git push -u azure main
+          git push -u azure main --force
         env:
           AZURE_GIT_TOKEN: ${{ secrets.AZURE_GIT_TOKEN }}
