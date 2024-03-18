@@ -18,6 +18,10 @@ app.get("/key", (req, res) => {
   });
 });
 
+app.get("/azure-pipeline", (req, res) => {
+  res.send("Azure Pipeline working fine");
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
